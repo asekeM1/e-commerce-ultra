@@ -1,4 +1,7 @@
 @extends('admin.layouts.template')
+@section('page_title')
+Главная страница
+@endsection
 @section('content')
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <!--begin::Content container-->

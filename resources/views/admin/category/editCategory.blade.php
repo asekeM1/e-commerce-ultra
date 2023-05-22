@@ -1,10 +1,10 @@
 @extends('admin.layouts.template')
 @section('page_title')
-Добавить категорию
+    Редактирование категории
 @endsection
 @section('content')
-<div id="kt_app_content_container" class="app-container container-xxl">
-        <form method="post" action="{{route('store-category')}}" id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="#"  >
+    <div id="kt_app_content_container" class="app-container container-xxl">
+        <form method="post" action="{{route('update-category')}}" id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="#"  >
             @csrf
             <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                 <div class="tab-content">
@@ -19,7 +19,9 @@
                                 <div class="card-body pt-0">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Название категории</label>
-                                        <input type="text" id="category_name" name="category_name" class="form-control mb-2" placeholder="Product name" value="" />
+                                        <input type="hidden"  name="category_id" value="{{$category->id}}" />
+                                        <input type="text" id="category_name" name="category_name" class="form-control mb-2" placeholder="{{$category->category_name}}" value="" />
+                                        <div class="text-muted fs-7">A product name is required and recommended to be unique.</div>
                                         @if($errors->any())
                                             <ul>
                                                 @foreach($errors->all() as $err)
@@ -27,7 +29,6 @@
                                                 @endforeach
                                             </ul>
                                         @endif
-                                        <div class="text-muted fs-7">A product name is required and recommended to be unique.</div>
                                     </div>
                                 </div>
                             </div>
@@ -35,16 +36,16 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="{{route('all-categories')}}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+                    <a href="{{route('all-categories')}}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Отменить</a>
                     <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                        <span class="indicator-label">Save Changes</span>
+                        <span class="indicator-label">Сохранить изменения</span>
                         <span class="indicator-progress">Please wait...
                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>
                 </div>
             </div>
         </form>
-</div>
+    </div>
 @endsection
 @section('scripts')
     <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>

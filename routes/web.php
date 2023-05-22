@@ -32,8 +32,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/dashboard', 'index');
     });
     Route::controller(CategoryController::class)->prefix('admin/category')->group(function (){
-        Route::get('/add', 'create')->name('add-category');
         Route::get('/all', 'index')->name('all-categories');
+        Route::get('/add', 'create')->name('add-category');
+        Route::post('/store', 'store')->name('store-category');
+        Route::get('/edit/{id}', 'edit')->name('edit-category');
+        Route::post('/update', 'update')->name('update-category');
+        Route::get('/delete/{id}', 'destroy')->name('delete-category');
     });
     Route::controller(SubCategoryController::class)->prefix('admin/subcategory')->group(function (){
         Route::get('/all', 'index')->name('all-sub-categories');

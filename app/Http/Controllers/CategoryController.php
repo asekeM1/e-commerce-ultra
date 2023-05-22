@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.allCategories');
+        $categories = Categories::latest()->get();
+        return view('admin.category.allCategories', compact('categories'));
     }
 
     /**
@@ -27,7 +29,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_name' => 'required|unique:category'
+        ]);
+
+        Categories::insert([
+            'category_name' => $request->category_name,
+            'slug' => strtolower(str_replace(' ', '-', $request->category_name)),
+        ]);
+
+        return redirect()->route('all-categories')->with('message', 'Категория была добавлена успешно!');
     }
 
     /**
@@ -43,15 +54,26 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Categories::findOrFail($id);
+        return view('admin.category.editCategory', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $category_id = $request->category_id;
+
+        $request->validate([
+            'category_name' => 'required|unique:category'
+        ]);
+        Categories::findOrFail($category_id)->update([
+            'category_name' => $request->category_name,
+            'slug' => strtolower(str_replace(' ', '-', $request->category_name)),
+        ]);
+        return redirect()->route('all-categories')->with('message', 'Категория была обновлена успешно!');
+
     }
 
     /**
@@ -59,6 +81,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Categories::findOrFail($id)->delete();
+
+        return redirect()->route('all-categories')->with('message', 'Категория была удалена успешно!');
     }
 }

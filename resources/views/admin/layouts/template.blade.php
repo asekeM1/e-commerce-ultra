@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><base href="../">
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+    <title>@yield('page_title')</title>
     <meta charset="utf-8" />
     <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords" content="Metronic, Bootstrap, Bootstrap 5, Angular, VueJs, React, Asp.Net Core, Blazor, Django, Flask &amp; Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -3152,20 +3152,16 @@
                     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
                         <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
                             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">eCommerce Dashboard</h1>
+                                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">@yield('page_title')</h1>
                                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                                     <li class="breadcrumb-item text-muted">
-                                        <a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+                                        <a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Главная</a>
                                     </li>
                                     <li class="breadcrumb-item">
                                         <span class="bullet bg-gray-400 w-5px h-2px"></span>
                                     </li>
-                                    <li class="breadcrumb-item text-muted">Dashboards</li>
+                                    <li class="breadcrumb-item text-muted">@yield('page_title')</li>
                                 </ul>
-                            </div>
-                            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                <a href="../../demo1/dist/apps/ecommerce/sales/listing.html" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Manage Sales</a>
-                                <a href="../../demo1/dist/apps/ecommerce/catalog/add-product.html" class="btn btn-sm fw-bold btn-primary">Add Product</a>
                             </div>
                         </div>
                     </div>
@@ -3520,15 +3516,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer py-5 text-center" id="kt_activities_footer">
-            <a href="../../demo1/dist/pages/user-profile/activity.html" class="btn btn-bg-body text-primary">View All Activities
-                <span class="svg-icon svg-icon-3 svg-icon-primary">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="currentColor" />
-							<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="currentColor" />
-						</svg>
-					</span>
         </div>
     </div>
 </div>
@@ -5720,7 +5707,6 @@
         </div>
     </div>
 </div>
-<script>var hostUrl = "{{asset('assets/')}}";</script>
 <script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
@@ -5730,5 +5716,6 @@
 <script src="{{asset('assets/js/custom/apps/chat/chat.js')}}"></script>
 <script src="{{asset('assets/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
 <script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
+@yield('scripts')
 </body>
 </html>
