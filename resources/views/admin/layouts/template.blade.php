@@ -1063,7 +1063,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="menu-item">
-                                                        <a class="menu-link" href="{{route('add-category')}}">
+                                                        <a class="menu-link" href="{{route('add-categories')}}">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -3007,7 +3007,7 @@
                                         </a>
                                     </div>
                                     <div class="menu-item">
-                                        <a class="menu-link" href="{{route('add-category')}}">
+                                        <a class="menu-link" href="{{route('add-categories')}}">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -3042,7 +3042,7 @@
                                         </a>
                                     </div>
                                     <div class="menu-item">
-                                        <a class="menu-link" href="{{route('add-sub-category')}}">
+                                        <a class="menu-link" href="{{route('add-sub-categories')}}">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>

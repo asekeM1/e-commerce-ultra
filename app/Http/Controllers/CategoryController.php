@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Categories::latest()->get();
-        return view('admin.category.allCategories', compact('categories'));
+        return view('admin.categories.allCategories', compact('categories'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.addCategory');
+        return view('admin.categories.addCategory');
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_name' => 'required|unique:category'
+            'category_name' => 'required|unique:categories'
         ]);
 
         Categories::insert([
@@ -55,7 +55,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $category = Categories::findOrFail($id);
-        return view('admin.category.editCategory', compact('category'));
+        return view('admin.categories.editCategory', compact('category'));
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
         $category_id = $request->category_id;
 
         $request->validate([
-            'category_name' => 'required|unique:category'
+            'category_name' => 'required|unique:categories'
         ]);
         Categories::findOrFail($category_id)->update([
             'category_name' => $request->category_name,
